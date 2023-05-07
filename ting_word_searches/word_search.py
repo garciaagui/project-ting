@@ -33,4 +33,18 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    results = list()
+
+    for index in range(instance.__len__()):
+        archive = instance.search(index)
+
+        ocurrences = get_ocurrences(word, archive, "search_by_word")
+
+        if ocurrences:
+            results.append({
+                "palavra": word,
+                "arquivo": archive['nome_do_arquivo'],
+                "ocorrencias": ocurrences,
+            })
+
+    return results
